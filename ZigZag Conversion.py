@@ -1,12 +1,12 @@
 # ZigZag Conversion
 
-s="A"
+s="0123456"
 
 ans=[]
 
 lens=len(s)
 
-numRows=2
+numRows=3
 
 #记录每一行字符的个个数；
 row=(lens-1)//2
@@ -21,38 +21,25 @@ if lens<numRows:
 def zig():
     i=0
     while i<numRows:
-        k=i-index
+        k=i
         j=0
-        while j<=row:
-            if j%gap==0:
-                k+=index
-                if k>=lens:
-                    ans.append("\n")
-                    break
+        while k<lens and j<=row:
+            if i==0 or i==numRows-1:
                 ans.append(s[k])
-            elif (j+1)%gap==0 and i!=0 and i!=numRows-1:
-                t=k
+                k+=index
+            else:
+                ans.append(s[k])
                 k+=(index-i*2)
                 if k>=lens:
-                    ans.append("\n")
                     break
-                print(k)
                 ans.append(s[k])
-                k=t
-            else:
-                ans.append(" ")
-
-            if j!=row:
-                ans.append(" ")
-            else:
-                ans.append("\n")
-
+                k+=2*i
             j+=1
 
         i+=1
 
 if numRows==1:
-    ans=" ".join(s)
+    ans="".join(s)
 else:
     zig()
     #将ans转换为字符串；
