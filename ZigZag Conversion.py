@@ -1,12 +1,12 @@
 # ZigZag Conversion
 
-s="AAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+s="A"
 
 ans=[]
 
 lens=len(s)
 
-numRows=3
+numRows=2
 
 #记录每一行字符的个个数；
 row=(lens-1)//2
@@ -14,8 +14,9 @@ row=(lens-1)//2
 gap=numRows-1
 #记录两行之间的下标差；
 index=2*gap
-#记录已经排好的字符个数；
-tot=0
+
+if lens<numRows:
+    numRows=lens
 
 def zig():
     i=0
@@ -29,7 +30,6 @@ def zig():
                     ans.append("\n")
                     break
                 ans.append(s[k])
-                #tot+=1
             elif (j+1)%gap==0 and i!=0 and i!=numRows-1:
                 t=k
                 k+=(index-i*2)
@@ -39,7 +39,6 @@ def zig():
                 print(k)
                 ans.append(s[k])
                 k=t
-                #tot+=1
             else:
                 ans.append(" ")
 
@@ -47,9 +46,6 @@ def zig():
                 ans.append(" ")
             else:
                 ans.append("\n")
-
-            #if tot==lens:
-                #break
 
             j+=1
 
