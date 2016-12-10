@@ -1,5 +1,7 @@
 #BinaryWatch
 
+#AC
+
 n=int(input())
 
 #分别代表上下两种LED灯亮的个数；
